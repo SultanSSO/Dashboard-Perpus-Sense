@@ -1,0 +1,51 @@
+/* ===== Style tambahan di luar utility Tailwind (tema TailAdmin-like) ===== */
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 8px; }
+.dark ::-webkit-scrollbar-thumb { background: #3d4b5c; }
+
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* Shadow kecil untuk topbar */
+.shadow-2 { box-shadow: 0 2px 4px rgba(0,0,0,.03); }
+
+/* Animasi kartu kursi */
+@keyframes seat-pop {
+  0%   { transform: scale(.94); opacity: .45; }
+  100% { transform: scale(1);   opacity: 1; }
+}
+.seat-card { animation: seat-pop .25s ease-out; transition: border-color .3s, background-color .3s; }
+
+/* Badge status kursi, warna brand */
+.badge { display:inline-flex; align-items:center; gap:.3rem; border-radius:4px; padding:.15rem .6rem; font-size:11px; font-weight:700; }
+.badge-occupied { background: rgba(18,81,116,.12); color:#125174; }
+.dark .badge-occupied { background: rgba(18,81,116,.35); color:#7FB3D5; }
+.badge-empty { background: rgba(244,197,66,.18); color:#8a6d1d; }
+.dark .badge-empty { background: rgba(244,197,66,.15); color:#F4C542; }
+
+/* Pulse gold untuk alert kritis */
+@keyframes pulse-gold {
+  0%, 100% { box-shadow: 0 0 0 0 rgba(244,197,66,.4); }
+  50%      { box-shadow: 0 0 0 6px rgba(244,197,66,0); }
+}
+.alert-critical { animation: pulse-gold 1.6s infinite; }
+
+/* Item notifikasi */
+.notif-item { transition: background-color .2s; }
+.notif-item:hover { background: rgba(18,81,116,.06); }
+.dark .notif-item:hover { background: rgba(244,197,66,.06); }
+
+/* Select option di dark mode */
+.dark select option { background: #1A222C; color: #AEB7C0; }
+
+/* Tile CCTV: animasi reconnect + tile aktif */
+@keyframes tile-flash {
+  0%, 100% { opacity: 1; }
+  50%      { opacity: .35; }
+}
+.cctv-tile.tile-refreshing .aspect-video { animation: tile-flash .35s ease-in-out 2; }
+.cctv-tile { transition: border-color .2s, box-shadow .2s, transform .15s; }
+.cctv-tile:hover { transform: translateY(-2px); }

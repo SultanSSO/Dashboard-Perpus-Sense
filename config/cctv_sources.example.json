@@ -1,0 +1,12 @@
+{
+  "schema_version": "cctv.sources.v1",
+  "sources": [
+    {
+      "camera_id": "example-camera-01",
+      "source_type": "file_or_rtsp",
+      "url": "",
+      "credential_ref": "CCTV_USERNAME/CCTV_PASSWORD",
+      "enabled": false
+    }
+  ]
+}

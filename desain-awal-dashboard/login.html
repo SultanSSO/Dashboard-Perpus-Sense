@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Masuk: PerpusSense</title>
+  <link rel="icon" type="image/png" href="assets/img/lambang-ugm-emas.png" />
+  <link href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,700,900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: {
+        colors: {
+          primary: '#125174', primarydk: '#0D3B54', gold: '#F4C542', golddark: '#C99E1F',
+          body: '#64748B', bodydark: '#AEB7C0', stroke: '#E2E8F0', whiter: '#F5F7FD',
+          boxdark: '#24303F', 'boxdark-2': '#1A222C', 'strokedark': '#2E3A47', 'meta-2': '#EFF4FB',
+        },
+        fontFamily: { satoshi: ['Satoshi','Inter','system-ui','sans-serif'] },
+        boxShadow: { default: '0px 8px 13px -3px rgba(0,0,0,0.07)' },
+        borderRadius: { sm: '10px' },
+      } }
+    }
+  </script>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+<body class="bg-whiter dark:bg-boxdark-2 font-satoshi antialiased">
+
+  <div class="flex min-h-screen items-center justify-center px-4 py-10">
+    <div class="w-full max-w-4xl overflow-hidden rounded-sm border border-stroke bg-white shadow-default dark:border-strokedark dark:bg-boxdark">
+      <div class="flex flex-col md:flex-row">
+
+        <!-- Panel brand (kiri), gambar ilustrasi perpustakaan -->
+        <div class="relative hidden overflow-hidden md:block md:w-5/12">
+          <img src="assets/img/login-brand.png" alt="Ilustrasi pintu masuk Perpustakaan Universitas Gadjah Mada"
+            class="absolute inset-0 h-full w-full object-cover" />
+          <div class="absolute inset-0 bg-gradient-to-t from-primarydk/90 via-primarydk/40 to-primarydk/10"></div>
+          <div class="relative flex h-full flex-col justify-end p-8">
+            <div class="flex items-center gap-3">
+              <div class="flex h-14 w-14 items-center justify-center">
+                <img src="assets/img/lambang-ugm-emas.png" alt="Lambang Universitas Gadjah Mada" class="h-14 w-14 object-contain" />
+              </div>
+              <div>
+                <h1 class="text-lg font-bold leading-tight text-white">Perpus<span class="text-gold">Sense</span></h1>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Panel form (kanan) -->
+        <div class="w-full px-8 py-12 md:w-7/12 md:px-12">
+          <div class="mx-auto w-full max-w-sm">
+            <h2 class="text-2xl font-bold text-black dark:text-white">Masuk ke Dashboard</h2>
+
+            <!-- Pesan error -->
+            <div id="login-error" class="mt-5 hidden items-start gap-2.5 rounded-sm border-l-4 border-rose-500 bg-rose-50 p-3.5 text-xs font-semibold text-rose-700 dark:bg-rose-500/10 dark:text-rose-400">
+              <svg class="mt-0.5 shrink-0" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+              <span id="login-error-text">Username atau password salah.</span>
+            </div>
+
+            <form id="login-form" class="mt-6 space-y-5" novalidate>
+              <div>
+                <label for="username" class="mb-2 block text-sm font-bold text-black dark:text-white">Username</label>
+                <div class="relative">
+                  <input id="username" name="username" type="text" placeholder="Masukkan username" autocomplete="username"
+                    class="w-full rounded-sm border border-stroke bg-transparent py-3 pl-4 pr-11 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2 dark:focus:border-gold" />
+                  <span class="absolute right-4 top-1/2 -translate-y-1/2 text-body">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                  </span>
+                </div>
+              </div>
+
+              <div>
+                <label for="password" class="mb-2 block text-sm font-bold text-black dark:text-white">Password</label>
+                <div class="relative">
+                  <input id="password" name="password" type="password" placeholder="Masukkan password" autocomplete="current-password"
+                    class="w-full rounded-sm border border-stroke bg-transparent py-3 pl-4 pr-11 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2 dark:focus:border-gold" />
+                  <button type="button" id="toggle-password" class="absolute right-4 top-1/2 -translate-y-1/2 text-body hover:text-primary dark:hover:text-gold" title="Tampilkan/sembunyikan password">
+                    <svg id="eye-open" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                    <svg id="eye-closed" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                  </button>
+                </div>
+              </div>
+
+              <div class="flex items-center justify-between text-sm">
+                <label class="flex cursor-pointer items-center gap-2 font-medium text-body">
+                  <input id="remember" type="checkbox" class="h-4 w-4 rounded border-stroke accent-[#125174]" />
+                  Ingat saya
+                </label>
+                <a href="#" class="font-medium text-primary hover:underline dark:text-gold">Lupa password?</a>
+              </div>
+
+              <button type="submit" id="btn-login"
+                class="w-full rounded-sm bg-primary py-3 text-sm font-bold text-white transition hover:bg-primarydk focus:ring-2 focus:ring-primary/40 dark:bg-primary dark:hover:bg-primarydk">
+                Masuk
+              </button>
+
+              <p class="text-center text-xs font-medium text-body">
+                Kredensial demo: <span class="font-bold text-black dark:text-white">admin</span> / <span class="font-bold text-black dark:text-white">admin123</span>
+              </p>
+            </form>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="assets/js/auth.js"></script>
+  <script src="assets/js/login.js"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "yolo11n": "yolo11n.pt",
+  "yolov8n": "yolov8n.pt",
+  "yolov10n": "yolov10n.pt",
+  "yolov9t": "yolov9t.pt",
+  "dfine-n": "dfine-n.pt",
+  "dfine-s": "dfine-s.pt",
+  "rtdetr-l": "rtdetr-l.pt"
+}

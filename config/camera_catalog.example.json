@@ -1,0 +1,17 @@
+{
+  "schema_version": "camera.catalog.v1",
+  "name": "Local camera catalog",
+  "security": {
+    "credentials_included": false
+  },
+  "cameras": [
+    {
+      "catalog_id": "example-camera-01",
+      "camera_id": "example-camera-01",
+      "source_type": "file_or_rtsp",
+      "operational_status": "active",
+      "location": "replace-with-approved-location",
+      "verified_from_frame": false
+    }
+  ]
+}

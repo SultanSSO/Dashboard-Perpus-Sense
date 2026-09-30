@@ -1,0 +1,7 @@
+{
+  "schema_version": "vision.agent.config.v2",
+  "default_profile": "balanced",
+  "model": "yolo11n.pt",
+  "device": "auto",
+  "analysis_cameras": []
+}
