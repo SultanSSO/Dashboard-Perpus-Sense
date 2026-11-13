@@ -49,6 +49,15 @@ class RuntimeManager:
         self._stopped_by_user: set[str] = set()
         self._cameras, self._vision = self._load_config()
 
+    @property
+    def worker_script(self) -> Path:
+        return self.project_dir / "vision_cctv.py"
+
+    @property
+    def engine_available(self) -> bool:
+        """Detection engine is optional: the dashboard runs without it."""
+        return self.worker_script.is_file()
+
     def _load_config(self) -> tuple[dict[str, dict[str, Any]], dict[str, Any]]:
         try:
             catalog = json.loads(self.catalog_path.read_text(encoding="utf-8"))
@@ -118,6 +127,11 @@ class RuntimeManager:
     def start_camera(self, camera_id: str) -> dict[str, Any]:
         with self._lock:
             camera = self._camera(camera_id)
+            if not self.engine_available:
+                raise CCTVServiceError(
+                    "ENGINE_UNAVAILABLE",
+                    "Mesin deteksi tidak terpasang pada build dashboard-only ini",
+                )
             existing = self._workers.get(camera_id)
             if self._running(existing):
                 return self.camera_status(camera_id)
@@ -180,6 +194,8 @@ class RuntimeManager:
 
     def start_task_engine(self) -> dict[str, Any]:
         with self._lock:
+            if not (self.project_dir / "vision_agent" / "task_engine.py").is_file():
+                return self.task_engine_status()
             if self._running(self._task_engine):
                 return self.task_engine_status()
             if self._task_log is not None and not self._task_log.closed:
@@ -262,6 +278,7 @@ class RuntimeManager:
             system_status = "DEGRADED"
         return {
             "system_status": system_status,
+            "engine_available": self.engine_available,
             "configured_cameras": len(cameras),
             "workers_running": running,
             "workers_failed": sum(bool(item.get("error")) for item in cameras),

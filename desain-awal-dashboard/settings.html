@@ -22,7 +22,7 @@
       } }
     }
   </script>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css?v=5" />
 </head>
 <body class="bg-whiter dark:bg-boxdark-2 font-satoshi text-slate-800 dark:text-bodydark antialiased">
 <div class="flex h-screen overflow-hidden">
@@ -31,12 +31,12 @@
   <aside id="sidebar" class="fixed left-0 top-0 z-40 flex h-screen w-72 -translate-x-full flex-col overflow-y-hidden bg-primarydk duration-300 ease-linear lg:static lg:translate-x-0">
     <div class="flex items-center gap-3 px-6 py-6">
       <div class="flex h-12 w-12 items-center justify-center">
-        <img src="assets/img/lambang-ugm-emas.png" alt="Lambang Universitas Gadjah Mada" class="h-12 w-12 object-contain" />
+        <img src="assets/img/lambang-ugm-emas.png" alt="Lambang Universitas Gadjah Mada" width="48" height="48" class="h-12 w-12 object-contain" />
       </div>
       <div><h1 class="text-lg font-bold text-white leading-tight">Perpus<span class="text-gold">Sense</span></h1></div>
     </div>
     <nav class="no-scrollbar flex-1 overflow-y-auto px-4 lg:px-6">
-      <h3 class="mb-3 mt-2 text-xs font-semibold uppercase tracking-wider text-bodydark">Menu</h3>
+      <p class="mb-3 mt-2 text-xs font-semibold uppercase tracking-wider text-bodydark">Menu</p>
       <ul class="flex flex-col gap-1.5">
         <li><a href="index.html" class="group flex items-center gap-3 rounded-sm px-4 py-2.5 font-medium text-bodydark duration-200 hover:bg-white/5 hover:text-white">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
@@ -47,29 +47,24 @@
         <li><a href="analytics.html" class="group flex items-center gap-3 rounded-sm px-4 py-2.5 font-medium text-bodydark duration-200 hover:bg-white/5 hover:text-white">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
           Riwayat &amp; Analitik</a></li>
-        <li><a href="#" class="group flex items-center gap-3 rounded-sm px-4 py-2.5 font-medium text-bodydark duration-200 hover:bg-white/5 hover:text-white">
+        <li><a href="index.html#alerts" class="group flex items-center gap-3 rounded-sm px-4 py-2.5 font-medium text-bodydark duration-200 hover:bg-white/5 hover:text-white">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-          Alerts
-          <span class="ml-auto rounded-sm bg-white/10 px-2 py-0.5 text-[9px] font-bold text-bodydark">SEGERA</span></a></li>
+          Alerts</a></li>
       </ul>
-      <h3 class="mb-3 mt-8 text-xs font-semibold uppercase tracking-wider text-bodydark">Lainnya</h3>
+      <p class="mb-3 mt-8 text-xs font-semibold uppercase tracking-wider text-bodydark">Lainnya</p>
       <ul class="flex flex-col gap-1.5">
         <li><a href="settings.html" class="group relative flex items-center gap-3 rounded-sm bg-white/10 px-4 py-2.5 font-medium text-white duration-200">
-          <span class="absolute left-0 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r bg-gold"></span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83 2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           Pengaturan</a></li>
-        <li><a href="../Vision_Agent_Documentation/00_README.md" class="group flex items-center gap-3 rounded-sm px-4 py-2.5 font-medium text-bodydark duration-200 hover:bg-white/5 hover:text-white">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          Dokumentasi</a></li>
       </ul>
     </nav>
     <div class="px-4 py-5 lg:px-6">
       <div class="rounded-sm border border-white/10 bg-white/5 p-4">
         <div class="flex items-center gap-2">
           <span class="relative flex h-2.5 w-2.5"><span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75"></span><span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-gold"></span></span>
-          <p class="text-xs font-bold uppercase tracking-wide text-gold">Agent Aktif</p>
+          <p class="text-xs font-bold uppercase tracking-wide text-gold">Dashboard Aktif</p>
         </div>
-        <p class="mt-1.5 text-[11px] leading-snug text-bodydark">Task engine dan Vision Worker tersambung</p>
+        <p class="mt-1.5 text-[11px] leading-snug text-bodydark">Build dashboard-only · mesin deteksi terpisah</p>
       </div>
     </div>
   </aside>
@@ -80,21 +75,21 @@
     <header class="sticky top-0 z-20 flex w-full border-b border-stroke bg-white dark:border-strokedark dark:bg-boxdark">
       <div class="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
         <div class="flex items-center gap-3">
-          <button id="btn-sidebar" class="rounded-sm border border-stroke p-2 dark:border-strokedark lg:hidden">
+          <button id="btn-sidebar" aria-label="Buka menu navigasi" class="rounded-sm border border-stroke p-2 dark:border-strokedark lg:hidden">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           </button>
           <h2 class="text-base font-bold text-black dark:text-white">Pengaturan</h2>
         </div>
         <div class="flex items-center gap-3 2xsm:gap-5">
           <div class="hidden xl:flex flex-col items-end leading-tight"><span id="clock" class="text-sm font-bold text-black dark:text-white">--:--:--</span></div>
-          <button id="btn-dark" class="flex h-10 w-10 items-center justify-center rounded-full border border-stroke text-body hover:bg-whiter dark:border-strokedark dark:hover:bg-boxdark-2" title="Mode gelap/terang">
+          <button id="btn-dark" aria-label="Ganti mode gelap atau terang" aria-pressed="false" class="flex h-11 w-11 items-center justify-center rounded-full border border-stroke text-body hover:bg-whiter dark:border-strokedark dark:hover:bg-boxdark-2" title="Mode gelap/terang">
             <svg id="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             <svg id="icon-sun" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           </button>
           <div class="flex items-center gap-3">
             <div class="hidden text-right sm:block leading-tight"><p class="text-sm font-bold text-black dark:text-white">Admin Perpus</p></div>
             <div class="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-sm font-bold text-gold ring-2 ring-gold/50">A</div>
-            <button id="btn-logout" title="Keluar" class="flex h-10 w-10 items-center justify-center rounded-full border border-stroke text-body hover:bg-whiter hover:text-rose-500 dark:border-strokedark dark:hover:bg-boxdark-2">
+            <button id="btn-logout" aria-label="Keluar dari dashboard" title="Keluar" class="flex h-11 w-11 items-center justify-center rounded-full border border-stroke text-body hover:bg-whiter hover:text-rose-500 dark:border-strokedark dark:hover:bg-boxdark-2">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
             </button>
           </div>
@@ -106,7 +101,7 @@
       <div class="mb-6 flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
         <h2 class="text-xl font-bold text-black dark:text-white md:text-2xl">Pengaturan</h2>
         <nav><ol class="flex items-center gap-2 text-sm font-medium">
-          <li><a href="index.html" class="text-body hover:text-primary dark:hover:text-gold">Dashboard</a></li>
+          <li><a href="index.html" class="inline-flex min-h-[44px] items-center text-body hover:text-primary dark:hover:text-gold">Dashboard</a></li>
           <li class="text-body">/</li>
           <li class="text-primary dark:text-gold">Pengaturan</li>
         </ol></nav>
@@ -115,21 +110,23 @@
       <div class="grid grid-cols-1 gap-6 lg:grid-cols-2">
         <!-- Tampilan -->
         <section class="rounded-sm border border-stroke bg-white px-6 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
-          <h3 class="text-base font-bold text-black dark:text-white">Tampilan</h3>
-          <p class="mt-1 text-xs font-medium text-body">Preferensi tema dashboard.</p>
+          <h3 class="text-lg font-bold text-black dark:text-white">Tampilan</h3>
+          <p class="text-sm font-medium text-body">Preferensi tema dashboard.</p>
           <div class="mt-5 space-y-4">
             <div class="flex items-center justify-between">
               <div>
                 <p class="text-sm font-bold text-black dark:text-white">Mode Gelap</p>
                 <p class="text-xs font-medium text-body">Aktifkan tema gelap.</p>
               </div>
-              <button id="set-dark" role="switch" aria-checked="false" class="relative h-7 w-12 rounded-full bg-slate-300 transition dark:bg-primary">
-                <span class="absolute top-0.5 left-0.5 h-6 w-6 rounded-full bg-white shadow transition dark:translate-x-5"></span>
+              <button id="set-dark" role="switch" aria-checked="false" aria-label="Mode gelap" class="flex h-11 w-14 shrink-0 items-center justify-center">
+                <span class="relative block h-7 w-12 rounded-full bg-slate-300 transition dark:bg-primary">
+                  <span class="absolute top-0.5 left-0.5 h-6 w-6 rounded-full bg-white shadow transition dark:translate-x-5"></span>
+                </span>
               </button>
             </div>
             <div>
               <label class="mb-2 block text-sm font-bold text-black dark:text-white">Interval refresh data (detik)</label>
-              <select id="set-interval" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-2.5 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2">
+              <select id="set-interval" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-3 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2">
                 <option value="3">3 detik</option>
                 <option value="5" selected>5 detik</option>
                 <option value="10">10 detik</option>
@@ -141,12 +138,12 @@
 
         <!-- Deteksi -->
         <section class="rounded-sm border border-stroke bg-white px-6 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
-          <h3 class="text-base font-bold text-black dark:text-white">Deteksi YOLO</h3>
-          <p class="mt-1 text-xs font-medium text-body">Ambang klasifikasi status area.</p>
+          <h3 class="text-lg font-bold text-black dark:text-white">Deteksi YOLO</h3>
+          <p class="text-sm font-medium text-body">Ambang klasifikasi status area.</p>
           <div class="mt-5 space-y-5">
             <div>
               <div class="mb-2 flex items-center justify-between">
-                <label class="text-sm font-bold text-black dark:text-white">Ambang "Padat"</label>
+                <label for="set-padat" class="text-sm font-bold text-black dark:text-white">Ambang "Padat"</label>
                 <span class="text-sm font-bold text-primary dark:text-gold"><span id="val-padat">66</span>%</span>
               </div>
               <input id="set-padat" type="range" min="50" max="90" value="66" class="w-full accent-[#125174]" />
@@ -154,7 +151,7 @@
             </div>
             <div>
               <div class="mb-2 flex items-center justify-between">
-                <label class="text-sm font-bold text-black dark:text-white">Ambang "Sedang"</label>
+                <label for="set-sedang" class="text-sm font-bold text-black dark:text-white">Ambang "Sedang"</label>
                 <span class="text-sm font-bold text-primary dark:text-gold"><span id="val-sedang">33</span>%</span>
               </div>
               <input id="set-sedang" type="range" min="10" max="60" value="33" class="w-full accent-[#125174]" />
@@ -165,32 +162,32 @@
 
         <!-- Notifikasi -->
         <section class="rounded-sm border border-stroke bg-white px-6 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
-          <h3 class="text-base font-bold text-black dark:text-white">Notifikasi</h3>
-          <p class="mt-1 text-xs font-medium text-body">Aturan alert di dashboard.</p>
+          <h3 class="text-lg font-bold text-black dark:text-white">Notifikasi</h3>
+          <p class="text-sm font-medium text-body">Aturan alert di dashboard.</p>
           <div class="mt-5 space-y-4">
             <label class="flex cursor-pointer items-center justify-between">
               <span class="text-sm font-medium text-black dark:text-white">Alert saat area Padat</span>
-              <input type="checkbox" checked class="h-4 w-4 accent-[#125174]" />
+              <input type="checkbox" checked class="h-5 w-5 shrink-0 accent-[#125174]" />
             </label>
             <label class="flex cursor-pointer items-center justify-between">
               <span class="text-sm font-medium text-black dark:text-white">Alert saat kamera offline</span>
-              <input type="checkbox" checked class="h-4 w-4 accent-[#125174]" />
+              <input type="checkbox" checked class="h-5 w-5 shrink-0 accent-[#125174]" />
             </label>
             <label class="flex cursor-pointer items-center justify-between">
               <span class="text-sm font-medium text-black dark:text-white">Suara notifikasi</span>
-              <input type="checkbox" class="h-4 w-4 accent-[#125174]" />
+              <input type="checkbox" class="h-5 w-5 shrink-0 accent-[#125174]" />
             </label>
           </div>
         </section>
 
         <!-- Vision Agent -->
         <section class="rounded-sm border border-stroke bg-white px-6 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
-          <h3 class="text-base font-bold text-black dark:text-white">Vision Agent</h3>
-          <p class="mt-1 text-xs font-medium text-body">Profil inference dan batas kewenangan worker.</p>
+          <h3 class="text-lg font-bold text-black dark:text-white">Vision Agent</h3>
+          <p class="text-sm font-medium text-body">Profil inference dan batas kewenangan worker.</p>
           <div class="mt-5 space-y-4">
             <div>
               <label class="mb-2 block text-sm font-bold text-black dark:text-white">Vision profile</label>
-              <select id="set-profile" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-2.5 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2">
+              <select id="set-profile" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-3 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2">
                 <option value="low_resource">Low resource · 1–2 FPS</option>
                 <option value="balanced" selected>Balanced · 5 FPS</option>
                 <option value="realtime">Realtime · 10 FPS</option>
@@ -199,7 +196,7 @@
             </div>
             <div>
               <label class="mb-2 block text-sm font-bold text-black dark:text-white">Model inference</label>
-              <select id="set-model" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-2.5 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2">
+              <select id="set-model" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-3 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2">
                 <option value="yolo11n.pt">YOLO11n · CPU ringan</option>
                 <option value="yolov8n.pt">YOLOv8n · CPU ringan</option>
                 <option value="yolov9t.pt">YOLOv9t · CPU ringan</option>
@@ -208,24 +205,24 @@
               </select>
               <div class="mt-2 flex items-center justify-between gap-3">
                 <p class="text-[11px] font-medium text-body">Model aktif dipakai kembali saat halaman dibuka.</p>
-                <button id="set-apply-model" type="button" class="shrink-0 rounded-sm bg-primary px-3 py-1.5 text-[11px] font-bold text-white transition hover:bg-primarydk">Terapkan</button>
+                <button id="set-apply-model" type="button" class="flex min-h-[44px] shrink-0 items-center rounded-sm bg-primary px-3 text-[11px] font-bold text-white transition hover:bg-primarydk">Terapkan</button>
               </div>
-              <p id="model-apply-status" class="mt-1 text-[11px] font-bold text-emerald-600 dark:text-emerald-400">Model aktif: yolo11n.pt</p>
+              <p id="model-apply-status" class="mt-1 text-[11px] font-bold text-emerald-700 dark:text-emerald-400">Model aktif: yolo11n.pt</p>
             </div>
-            <div class="flex items-center justify-between">
+            <label class="flex min-h-[44px] cursor-pointer items-center justify-between">
               <div>
                 <p class="text-sm font-bold text-black dark:text-white">Bounding box</p>
                 <p class="text-xs font-medium text-body">Visualisasi saja, inference tetap aktif.</p>
               </div>
-              <input id="set-boxes" type="checkbox" checked class="h-4 w-4 accent-[#125174]" />
-            </div>
-            <div class="flex items-center justify-between">
+              <input id="set-boxes" type="checkbox" checked class="h-5 w-5 accent-[#125174]" />
+            </label>
+            <label class="flex min-h-[44px] cursor-pointer items-center justify-between">
               <div>
                 <p class="text-sm font-bold text-black dark:text-white">Health event</p>
                 <p class="text-xs font-medium text-body">Laporkan kamera offline/degraded.</p>
               </div>
-              <input id="set-health-events" type="checkbox" checked class="h-4 w-4 accent-[#125174]" />
-            </div>
+              <input id="set-health-events" type="checkbox" checked class="h-5 w-5 accent-[#125174]" />
+            </label>
           </div>
         </section>
 
@@ -233,8 +230,8 @@
         <section class="rounded-sm border border-stroke bg-white px-6 py-6 shadow-default dark:border-strokedark dark:bg-boxdark lg:col-span-2">
           <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h3 class="text-base font-bold text-black dark:text-white">Kontrol Runtime Vision Agent</h3>
-              <p class="mt-1 text-xs font-medium text-body">Menjalankan worker kamera dan Task Engine. Start All memakai batch agar beban tidak melonjak sekaligus.</p>
+              <h3 class="text-lg font-bold text-black dark:text-white">Kontrol Runtime Vision Agent</h3>
+              <p class="text-sm font-medium text-body">Menjalankan worker kamera dan Task Engine. Start All memakai batch agar beban tidak melonjak sekaligus.</p>
             </div>
             <span id="runtime-system-status" class="rounded-sm bg-slate-100 px-3 py-1 text-[10px] font-bold text-body dark:bg-boxdark-2">MEMUAT</span>
           </div>
@@ -245,19 +242,19 @@
             <div class="rounded-sm bg-whiter p-4 dark:bg-boxdark-2"><p class="text-[10px] font-bold uppercase text-body">Mode startup</p><p class="mt-1 text-lg font-bold text-black dark:text-white">BATCH</p></div>
           </div>
           <div class="mt-5 flex flex-wrap gap-3">
-            <button id="btn-runtime-start" type="button" class="rounded-sm bg-emerald-600 px-5 py-2.5 text-sm font-bold text-white hover:bg-emerald-700">Start All</button>
-            <button id="btn-runtime-stop" type="button" class="rounded-sm bg-rose-500 px-5 py-2.5 text-sm font-bold text-white hover:bg-rose-600">Stop All</button>
-            <button id="btn-runtime-restart" type="button" class="rounded-sm bg-primary px-5 py-2.5 text-sm font-bold text-white hover:bg-primarydk">Restart All</button>
+            <button id="btn-runtime-start" type="button" class="flex min-h-[44px] items-center rounded-sm bg-emerald-700 px-5 text-sm font-bold text-white hover:bg-emerald-800">Start All</button>
+            <button id="btn-runtime-stop" type="button" class="flex min-h-[44px] items-center rounded-sm bg-rose-600 px-5 text-sm font-bold text-white hover:bg-rose-700">Stop All</button>
+            <button id="btn-runtime-restart" type="button" class="flex min-h-[44px] items-center rounded-sm bg-primary px-5 text-sm font-bold text-white hover:bg-primarydk">Restart All</button>
           </div>
           <div class="mt-5 grid grid-cols-1 gap-3 border-t border-stroke pt-5 dark:border-strokedark md:grid-cols-[1fr_auto]">
             <div>
               <label for="runtime-camera-select" class="mb-2 block text-sm font-bold text-black dark:text-white">Kontrol satu kamera</label>
-              <select id="runtime-camera-select" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-2.5 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2"><option value="">Memuat kamera...</option></select>
+              <select id="runtime-camera-select" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-3 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2"><option value="">Memuat kamera...</option></select>
             </div>
             <div class="flex items-end gap-2">
-              <button id="btn-camera-start" type="button" class="rounded-sm border border-emerald-600 px-3 py-2.5 text-xs font-bold text-emerald-700">Start</button>
-              <button id="btn-camera-stop" type="button" class="rounded-sm border border-rose-500 px-3 py-2.5 text-xs font-bold text-rose-600">Stop</button>
-              <button id="btn-camera-restart" type="button" class="rounded-sm border border-primary px-3 py-2.5 text-xs font-bold text-primary dark:text-white">Restart</button>
+              <button id="btn-camera-start" type="button" class="flex min-h-[44px] items-center rounded-sm border border-emerald-700 px-3 text-xs font-bold text-emerald-700 dark:border-emerald-400 dark:text-emerald-300">Start</button>
+              <button id="btn-camera-stop" type="button" class="flex min-h-[44px] items-center rounded-sm border border-rose-600 px-3 text-xs font-bold text-rose-700 dark:border-rose-400 dark:text-rose-300">Stop</button>
+              <button id="btn-camera-restart" type="button" class="flex min-h-[44px] items-center rounded-sm border border-primary px-3 text-xs font-bold text-primary dark:text-white">Restart</button>
             </div>
           </div>
           <p id="runtime-action-status" class="mt-3 text-xs font-medium text-body">Belum ada tindakan runtime.</p>
@@ -267,8 +264,8 @@
         <section class="rounded-sm border border-stroke bg-white px-6 py-6 shadow-default dark:border-strokedark dark:bg-boxdark lg:col-span-2">
           <div class="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
             <div>
-              <h3 class="text-base font-bold text-black dark:text-white">Pengaturan Agent</h3>
-              <p class="mt-1 text-xs font-medium text-body">Atur rule task yang benar-benar dieksekusi Task Engine.</p>
+              <h3 class="text-lg font-bold text-black dark:text-white">Pengaturan Agent</h3>
+              <p class="text-sm font-medium text-body">Atur rule task yang benar-benar dieksekusi Task Engine.</p>
             </div>
             <div class="flex items-center gap-2">
               <span class="rounded-sm bg-gold/20 px-2.5 py-1 text-[10px] font-bold text-golddark dark:text-gold">AUTONOMY LEVEL 1</span>
@@ -278,7 +275,7 @@
 
           <div class="mt-6 flex flex-col gap-4 rounded-sm border border-gold/40 bg-gold/10 px-4 py-4 dark:border-gold/30 sm:flex-row sm:items-center sm:justify-between">
             <label class="flex cursor-pointer items-start gap-3">
-              <input id="agent-default-all" type="checkbox" class="mt-0.5 h-4 w-4 accent-[#125174]" />
+              <input id="agent-default-all" type="checkbox" class="mt-0.5 h-5 w-5 shrink-0 accent-[#125174]" />
               <span>
                 <span class="block text-sm font-bold text-black dark:text-white">Set as default: kerjakan semua task</span>
                 <span class="block text-xs font-medium leading-relaxed text-body">ON menjalankan semua task monitoring yang didukung dan membuat task baru langsung berstatus RUNNING. OFF mengembalikan kontrol aktif/nonaktif ke masing-masing task.</span>
@@ -286,24 +283,24 @@
             </label>
             <div class="flex shrink-0 flex-col items-start gap-2 sm:items-end">
               <p id="agent-default-status" class="text-xs font-medium text-body">Memuat mode default...</p>
-              <button id="btn-save-agent-default" type="button" class="rounded-sm border border-primary bg-white px-4 py-2 text-xs font-bold text-primary transition hover:bg-primary hover:text-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-boxdark dark:text-white">Terapkan Default</button>
+              <button id="btn-save-agent-default" type="button" class="flex min-h-[44px] items-center rounded-sm border border-primary bg-white px-4 text-xs font-bold text-primary transition hover:bg-primary hover:text-white disabled:cursor-not-allowed disabled:opacity-50 dark:bg-boxdark dark:text-white">Terapkan Default</button>
             </div>
           </div>
 
           <div class="mt-6 grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-4">
             <div class="md:col-span-2">
               <label for="agent-task-select" class="mb-2 block text-sm font-bold text-black dark:text-white">Task monitoring</label>
-              <select id="agent-task-select" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-2.5 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2">
+              <select id="agent-task-select" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-3 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2">
                 <option value="">Memuat task...</option>
               </select>
             </div>
             <div>
               <label for="agent-camera" class="mb-2 block text-sm font-bold text-black dark:text-white">Kamera</label>
-              <input id="agent-camera" type="text" readonly class="w-full rounded-sm border border-stroke bg-whiter px-3 py-2.5 text-sm text-body outline-none dark:border-strokedark dark:bg-boxdark-2" />
+              <input id="agent-camera" type="text" readonly class="w-full rounded-sm border border-stroke bg-whiter px-3 py-3 text-sm text-body outline-none dark:border-strokedark dark:bg-boxdark-2" />
             </div>
             <div>
               <label for="agent-severity" class="mb-2 block text-sm font-bold text-black dark:text-white">Severity</label>
-              <select id="agent-severity" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-2.5 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2">
+              <select id="agent-severity" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-3 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2">
                 <option value="info">Info</option>
                 <option value="warning">Warning</option>
                 <option value="critical">Critical</option>
@@ -311,31 +308,31 @@
             </div>
             <div>
               <label for="agent-threshold" class="mb-2 block text-sm font-bold text-black dark:text-white">Batas jumlah orang</label>
-              <input id="agent-threshold" type="number" min="0" step="1" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-2.5 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2" />
+              <input id="agent-threshold" type="number" min="0" step="1" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-3 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2" />
               <p class="mt-1 text-[11px] font-medium text-body">Alert aktif ketika jumlah orang lebih besar dari batas.</p>
             </div>
             <div>
               <label for="agent-persistence" class="mb-2 block text-sm font-bold text-black dark:text-white">Durasi pemicu (detik)</label>
-              <input id="agent-persistence" type="number" min="0" step="1" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-2.5 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2" />
+              <input id="agent-persistence" type="number" min="0" step="1" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-3 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2" />
             </div>
             <div>
               <label for="agent-resolution" class="mb-2 block text-sm font-bold text-black dark:text-white">Durasi normal (detik)</label>
-              <input id="agent-resolution" type="number" min="0" step="1" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-2.5 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2" />
+              <input id="agent-resolution" type="number" min="0" step="1" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-3 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2" />
             </div>
             <div>
               <label for="agent-cooldown" class="mb-2 block text-sm font-bold text-black dark:text-white">Cooldown (detik)</label>
-              <input id="agent-cooldown" type="number" min="0" step="1" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-2.5 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2" />
+              <input id="agent-cooldown" type="number" min="0" step="1" class="w-full rounded-sm border border-stroke bg-transparent px-3 py-3 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2" />
             </div>
           </div>
 
           <div class="mt-5 flex flex-col gap-4 rounded-sm bg-whiter px-4 py-4 dark:bg-boxdark-2 sm:flex-row sm:items-center sm:justify-between">
             <label class="flex cursor-pointer items-center gap-3">
-              <input id="agent-enabled" type="checkbox" class="h-4 w-4 accent-[#125174]" />
+              <input id="agent-enabled" type="checkbox" class="h-5 w-5 shrink-0 accent-[#125174]" />
               <span><span class="block text-sm font-bold text-black dark:text-white">Task aktif</span><span class="block text-xs font-medium text-body">Nonaktifkan untuk mengubah status menjadi PAUSED.</span></span>
             </label>
             <div class="flex flex-col items-start gap-2 sm:items-end">
               <p id="agent-save-status" class="text-xs font-medium text-body">Konfigurasi backend belum dimuat.</p>
-              <button id="btn-save-agent" type="button" class="rounded-sm bg-primary px-5 py-2.5 text-sm font-bold text-white transition hover:bg-primarydk disabled:cursor-not-allowed disabled:opacity-50">Simpan Pengaturan Agent</button>
+              <button id="btn-save-agent" type="button" class="flex min-h-[44px] items-center rounded-sm bg-primary px-5 text-sm font-bold text-white transition hover:bg-primarydk disabled:cursor-not-allowed disabled:opacity-50">Simpan Pengaturan Agent</button>
             </div>
           </div>
           <p class="mt-3 text-[11px] font-medium text-body">Perubahan divalidasi backend, dicatat pada audit log, dan dibaca Task Engine pada siklus berikutnya.</p>
@@ -344,8 +341,8 @@
 
         <!-- Akun -->
         <section class="rounded-sm border border-stroke bg-white px-6 py-6 shadow-default dark:border-strokedark dark:bg-boxdark">
-          <h3 class="text-base font-bold text-black dark:text-white">Akun</h3>
-          <p class="mt-1 text-xs font-medium text-body">Informasi sesi dan keamanan.</p>
+          <h3 class="text-lg font-bold text-black dark:text-white">Akun</h3>
+          <p class="text-sm font-medium text-body">Informasi sesi dan keamanan.</p>
           <div class="mt-5 space-y-4">
             <div class="flex items-center justify-between rounded-sm bg-whiter px-4 py-3 dark:bg-boxdark-2">
               <div>
@@ -354,10 +351,10 @@
               </div>
               <span class="rounded-sm bg-emerald-100 px-2.5 py-1 text-[10px] font-bold text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300">AKTIF</span>
             </div>
-            <button id="btn-change-pass" class="w-full rounded-sm border border-stroke py-2.5 text-sm font-bold text-black transition hover:bg-whiter dark:border-strokedark dark:text-white dark:hover:bg-boxdark-2">
+            <button id="btn-change-pass" class="flex min-h-[44px] w-full items-center justify-center rounded-sm border border-stroke text-sm font-bold text-black transition hover:bg-whiter dark:border-strokedark dark:text-white dark:hover:bg-boxdark-2">
               Ubah Password
             </button>
-            <button id="btn-logout2" class="w-full rounded-sm bg-rose-500 py-2.5 text-sm font-bold text-white transition hover:bg-rose-600">
+            <button id="btn-logout2" class="flex min-h-[44px] w-full items-center justify-center rounded-sm bg-rose-600 text-sm font-bold text-white transition hover:bg-rose-700">
               Keluar
             </button>
           </div>
@@ -365,18 +362,18 @@
       </div>
 
       <div class="mt-6 flex justify-end gap-3">
-        <button id="btn-reset" class="rounded-sm border border-stroke px-5 py-2.5 text-sm font-bold text-black transition hover:bg-whiter dark:border-strokedark dark:text-white dark:hover:bg-boxdark-2">Atur Ulang</button>
-        <button id="btn-save" class="rounded-sm bg-primary px-6 py-2.5 text-sm font-bold text-white transition hover:bg-primarydk">Simpan Pengaturan</button>
+        <button id="btn-reset" class="flex min-h-[44px] items-center rounded-sm border border-stroke px-5 text-sm font-bold text-black transition hover:bg-whiter dark:border-strokedark dark:text-white dark:hover:bg-boxdark-2">Atur Ulang</button>
+        <button id="btn-save" class="flex min-h-[44px] items-center rounded-sm bg-primary px-6 text-sm font-bold text-white transition hover:bg-primarydk">Simpan Pengaturan</button>
       </div>
 
-      <footer class="py-6 text-center text-xs font-medium text-body">Preferensi UI disimpan lokal · konfigurasi agent disimpan dan diaudit di backend</footer>
+      <footer class="py-6"></footer>
     </main>
   </div>
 </div>
 
 <script src="assets/js/auth.js"></script>
 <script src="assets/js/api.js?v=1"></script>
-<script src="assets/js/settings.js?v=6"></script>
+<script src="assets/js/settings.js?v=9"></script>
 <script>
   (function () {
     PerpusAuth.guard();

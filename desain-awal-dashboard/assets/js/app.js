@@ -14,7 +14,7 @@ const COLOR = {
   goldDk:   '#C99E1F',
   green:    '#10B981',
   greenDk:  '#059669',
-  body:     '#64748B',
+  body:     '#5B6B80',
   bodyDark: '#AEB7C0',
   grid:     '#E2E8F0',
   gridDark: '#2E3A47',
@@ -68,6 +68,7 @@ const state = {
   ],
   agent: { hermes: 'Terhubung', rules: 'Aktif', worker: '7 kamera', model: 'YOLO11n · CPU' },
   lastEvent: null,
+  query: '',          // filter pencarian area (nama atau id kamera)
   dark: _qTheme ? _qTheme === 'dark'
        : _savedTheme ? _savedTheme === 'dark'
        : window.matchMedia('(prefers-color-scheme: dark)').matches,
@@ -89,10 +90,16 @@ async function handleOccupancyEvent() {
   try {
     const overview = await VisionApi.get('/overview');
     const workerLive = overview.health?.live_worker?.connected === true;
-    $('conn-label').textContent = workerLive ? 'Vision Worker Live' : 'API Terhubung · Worker Berhenti/Stale';
-    $('conn-sublabel').textContent = workerLive
+    const connLabel = $('conn-label');
+    const connDetail = workerLive
       ? 'Observation semi-realtime dari Vision Worker'
       : 'Dashboard aktif, tetapi observation lama tidak dihitung sebagai kondisi saat ini';
+    if (connLabel) {
+      connLabel.textContent = workerLive ? 'Vision Worker live' : 'API terhubung, worker berhenti';
+      connLabel.title = connDetail;
+    }
+    const dot = $('conn-dot');
+    if (dot) dot.className = `h-1.5 w-1.5 shrink-0 rounded-full ${workerLive ? 'bg-emerald-400' : 'bg-gold'}`;
     const cameras = overview.analysis_cameras || [];
     const observations = overview.observations || {};
     const statuses = overview.statuses || {};
@@ -170,8 +177,13 @@ async function handleOccupancyEvent() {
     };
     renderAll();
   } catch (error) {
-    $('conn-label').textContent = 'Backend CCTV Offline';
-    $('conn-sublabel').textContent = 'API CCTV belum dapat dihubungi';
+    const connLabel = $('conn-label');
+    if (connLabel) {
+      connLabel.textContent = 'Backend CCTV offline';
+      connLabel.title = 'API CCTV belum dapat dihubungi';
+    }
+    const dot = $('conn-dot');
+    if (dot) dot.className = 'h-1.5 w-1.5 shrink-0 rounded-full bg-rose-500';
     state.agent.hermes = 'Backend offline';
     state.agent.rules = 'Tidak tersedia';
     renderAgentPanels();
@@ -223,7 +235,7 @@ function setTrend(id, diff, upIsGood, unit = '') {
   const up = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/></svg>`;
   const dn = `<svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="23 18 13.5 8.5 8.5 13.5 1 6"/><polyline points="17 18 23 18 23 12"/></svg>`;
   const good = upIsGood ? diff >= 0 : diff <= 0;
-  const cls = good ? 'text-emerald-600 dark:text-emerald-400' : 'text-rose-500 dark:text-rose-400';
+  const cls = good ? 'text-emerald-700 dark:text-emerald-400' : 'text-rose-700 dark:text-rose-400';
   if (diff === 0) { el.className = 'flex items-center gap-1 text-sm font-medium text-body'; el.innerHTML = 'stabil'; return; }
   el.className = `flex items-center gap-1 text-sm font-medium ${cls}`;
   el.innerHTML = `${diff > 0 ? up : dn} ${Math.abs(diff)}${unit}`;
@@ -290,14 +302,31 @@ function renderCharts() {
 }
 
 /* --- Kartu per area CCTV --- */
+/* --- Filter pencarian: nama area atau id kamera --- */
+function visibleAreaIds() {
+  const q = state.query.trim().toLowerCase();
+  if (!q) return state.areaOrder;
+  return state.areaOrder.filter(id => {
+    const a = state.areas[id] || {};
+    const name = (a.name || '').toLowerCase();
+    return name.includes(q) || id.toLowerCase().includes(q);
+  });
+}
+
 function renderAreaCards() {
   const toneMap = {
-    rose:    { ring: 'border-rose-200 bg-rose-50 dark:border-rose-500/30 dark:bg-rose-500/10', bar: 'bg-rose-500', txt: 'text-rose-600 dark:text-rose-400', badge: 'bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-300' },
+    rose:    { ring: 'border-rose-200 bg-rose-50 dark:border-rose-500/30 dark:bg-rose-500/10', bar: 'bg-rose-500', txt: 'text-rose-700 dark:text-rose-400', badge: 'bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-300' },
     amber:   { ring: 'border-amber-200 bg-amber-50 dark:border-amber-500/30 dark:bg-amber-500/10', bar: 'bg-gold', txt: 'text-golddark dark:text-gold', badge: 'bg-gold/20 text-golddark dark:bg-gold/20 dark:text-gold' },
-    emerald: { ring: 'border-emerald-200 bg-emerald-50 dark:border-emerald-500/30 dark:bg-emerald-500/10', bar: 'bg-emerald-500', txt: 'text-emerald-600 dark:text-emerald-400', badge: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300' },
+    emerald: { ring: 'border-emerald-200 bg-emerald-50 dark:border-emerald-500/30 dark:bg-emerald-500/10', bar: 'bg-emerald-500', txt: 'text-emerald-700 dark:text-emerald-400', badge: 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300' },
     slate:   { ring: 'border-slate-200 bg-slate-50 dark:border-slate-500/30 dark:bg-slate-500/10', bar: 'bg-slate-400', txt: 'text-slate-600 dark:text-slate-300', badge: 'bg-slate-100 text-slate-700 dark:bg-slate-500/20 dark:text-slate-300' },
   };
-  $('seat-grid').innerHTML = state.areaOrder.map(id => {
+  const ids = visibleAreaIds();
+  if (!ids.length) {
+    $('seat-grid').innerHTML = `<p class="col-span-full rounded-sm border border-dashed border-stroke px-4 py-8 text-center text-sm font-medium text-body dark:border-strokedark">Tidak ada area yang cocok dengan pencarian.</p>`;
+    $('seatmap-updated').textContent = fmtTime(state.lastEvent?.timestamp);
+    return;
+  }
+  $('seat-grid').innerHTML = ids.map(id => {
     const a = state.areas[id];
     const cs = crowdStatus(a.occupancy);
     const tone = toneMap[cs.color];
@@ -307,22 +336,21 @@ function renderAreaCards() {
       <button type="button" onclick="selectArea('${id}')"
         class="seat-card relative overflow-hidden rounded-sm border p-4 text-left transition hover:-translate-y-0.5
           ${tone.ring} ${active ? 'ring-2 ring-primary/40 dark:ring-gold/40' : ''}">
-        <span class="absolute left-0 top-0 h-full w-1 ${tone.bar}"></span>
-        <div class="flex items-start justify-between gap-2 pl-2">
+        <div class="flex items-start justify-between gap-2">
           <div class="min-w-0">
             <p class="truncate text-sm font-bold text-black dark:text-white">${a.name}</p>
             <p class="mt-0.5 text-[10px] font-medium uppercase tracking-wide text-body">${a.id}</p>
           </div>
           ${active ? '<span class="shrink-0 rounded-sm bg-primary px-1.5 py-0.5 text-[9px] font-bold text-white dark:bg-gold dark:text-primarydk">DIPILIH</span>' : ''}
         </div>
-        <div class="mt-3 flex items-end justify-between pl-2">
+        <div class="mt-3 flex items-end justify-between">
           <p class="text-2xl font-bold ${tone.txt}">${pct}<span class="text-sm">%</span></p>
           <span class="rounded-sm px-2 py-0.5 text-[11px] font-bold ${tone.badge}">${cs.label}</span>
         </div>
-        <div class="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10 pl-2">
+        <div class="mt-2 h-1.5 w-full overflow-hidden rounded-full bg-black/10 dark:bg-white/10">
           <div class="h-full rounded-full ${tone.bar}" style="width:${Number.isFinite(a.occupancy) ? pct : 0}%"></div>
         </div>
-        <p class="mt-2 pl-2 text-[10px] font-medium text-body">${a.fresh ? `${a.persons} orang · live` : a.updated ? `Hasil terakhir ${a.last_persons ?? '--'} orang · stale` : 'Belum ada data'} </p>
+        <p class="mt-2 text-[10px] font-medium text-body">${a.fresh ? `${a.persons} orang · live` : a.updated ? `Hasil terakhir ${a.last_persons ?? '--'} orang · stale` : 'Belum ada data'} </p>
       </button>`;
   }).join('');
   $('seatmap-updated').textContent = fmtTime(state.lastEvent?.timestamp);
@@ -330,7 +358,12 @@ function renderAreaCards() {
 
 /* --- Tabel per area --- */
 function renderAreaTable() {
-  $('chair-table').innerHTML = state.areaOrder.map(id => {
+  const ids = visibleAreaIds();
+  if (!ids.length) {
+    $('chair-table').innerHTML = `<tr><td colspan="5" class="py-6 text-center text-sm font-medium text-body">Tidak ada area yang cocok dengan pencarian.</td></tr>`;
+    return;
+  }
+  $('chair-table').innerHTML = ids.map(id => {
     const a = state.areas[id];
     const cs = crowdStatus(a.occupancy);
     const badgeCls = { rose: 'bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-300',
@@ -339,7 +372,10 @@ function renderAreaTable() {
                        slate: 'bg-slate-100 text-slate-700 dark:bg-slate-500/20 dark:text-slate-300' }[cs.color];
     const occupancy = Number.isFinite(a.occupancy) ? `${(a.occupancy * 100).toFixed(0)}%` : '--';
     return `
-      <tr class="cursor-pointer hover:bg-whiter dark:hover:bg-boxdark-2" onclick="selectArea('${id}')">
+      <tr class="cursor-pointer hover:bg-whiter dark:hover:bg-boxdark-2" tabindex="0" role="button"
+          aria-label="Pilih area ${a.name}"
+          onclick="selectArea('${id}')"
+          onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectArea('${id}');}">
         <td class="py-3 pr-4 font-bold text-black dark:text-white">${a.name}</td>
         <td class="py-3 pr-4"><span class="badge ${badgeCls}">${cs.label}</span></td>
         <td class="py-3 pr-4 font-medium">${occupancy}</td>
@@ -451,6 +487,8 @@ function applyDark() {
   document.documentElement.classList.toggle('dark', state.dark);
   $('icon-moon').classList.toggle('hidden', state.dark);
   $('icon-sun').classList.toggle('hidden', !state.dark);
+  const darkBtn = $('btn-dark');
+  if (darkBtn) darkBtn.setAttribute('aria-pressed', String(state.dark));
   if (charts.line) renderCharts();
 }
 $('btn-dark').addEventListener('click', () => {
@@ -468,12 +506,39 @@ $('sidebar-overlay').addEventListener('click', () => {
   $('sidebar-overlay').classList.add('hidden');
 });
 
-$('btn-notif').addEventListener('click', e => { e.stopPropagation(); $('notif-dropdown').classList.toggle('hidden'); });
+$('btn-notif').addEventListener('click', e => {
+  e.stopPropagation();
+  const dd = $('notif-dropdown');
+  dd.classList.toggle('hidden');
+  $('btn-notif').setAttribute('aria-expanded', String(!dd.classList.contains('hidden')));
+});
 document.addEventListener('click', e => {
   const dd = $('notif-dropdown');
-  if (!dd.contains(e.target)) dd.classList.add('hidden');
+  if (!dd.contains(e.target)) {
+    dd.classList.add('hidden');
+    $('btn-notif').setAttribute('aria-expanded', 'false');
+  }
+});
+/* Escape menutup dropdown notifikasi, sama seperti klik di luar. */
+document.addEventListener('keydown', e => {
+  if (e.key !== 'Escape') return;
+  const dd = $('notif-dropdown');
+  if (!dd || dd.classList.contains('hidden')) return;
+  dd.classList.add('hidden');
+  $('btn-notif').setAttribute('aria-expanded', 'false');
+  $('btn-notif').focus();
 });
 $('btn-clear-notif').addEventListener('click', () => { state.alerts = []; renderAlerts(); renderNotifs(); });
+
+/* Pencarian area: menyaring kartu status dan tabel per area. */
+const areaSearch = $('area-search');
+if (areaSearch) {
+  areaSearch.addEventListener('input', e => {
+    state.query = e.target.value;
+    renderAreaCards();
+    renderAreaTable();
+  });
+}
 
 setInterval(() => {
   $('clock').textContent = new Date().toLocaleTimeString('id-ID');

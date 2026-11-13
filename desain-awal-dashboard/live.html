@@ -22,7 +22,7 @@
       } }
     }
   </script>
-  <link rel="stylesheet" href="assets/css/style.css" />
+  <link rel="stylesheet" href="assets/css/style.css?v=5" />
 </head>
 <body class="bg-whiter dark:bg-boxdark-2 font-satoshi text-slate-800 dark:text-bodydark antialiased">
 
@@ -33,7 +33,7 @@
     class="fixed left-0 top-0 z-40 flex h-screen w-72 -translate-x-full flex-col overflow-y-hidden bg-primarydk duration-300 ease-linear lg:static lg:translate-x-0">
     <div class="flex items-center gap-3 px-6 py-6">
       <div class="flex h-12 w-12 items-center justify-center">
-        <img src="assets/img/lambang-ugm-emas.png" alt="Lambang Universitas Gadjah Mada" class="h-12 w-12 object-contain" />
+        <img src="assets/img/lambang-ugm-emas.png" alt="Lambang Universitas Gadjah Mada" width="48" height="48" class="h-12 w-12 object-contain" />
       </div>
       <div>
         <h1 class="text-lg font-bold text-white leading-tight">Perpus<span class="text-gold">Sense</span></h1>
@@ -41,45 +41,39 @@
     </div>
 
     <nav class="no-scrollbar flex-1 overflow-y-auto px-4 lg:px-6">
-      <h3 class="mb-3 mt-2 text-xs font-semibold uppercase tracking-wider text-bodydark">Menu</h3>
+      <p class="mb-3 mt-2 text-xs font-semibold uppercase tracking-wider text-bodydark">Menu</p>
       <ul class="flex flex-col gap-1.5">
         <li><a href="index.html" class="group flex items-center gap-3 rounded-sm px-4 py-2.5 font-medium text-bodydark duration-200 hover:bg-white/5 hover:text-white">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="9"/><rect x="14" y="3" width="7" height="5"/><rect x="14" y="12" width="7" height="9"/><rect x="3" y="16" width="7" height="5"/></svg>
           Dashboard</a></li>
         <li><a href="live.html" class="group relative flex items-center gap-3 rounded-sm bg-white/10 px-4 py-2.5 font-medium text-white duration-200">
-          <span class="absolute left-0 top-1/2 h-6 w-1 -translate-y-1/2 rounded-r bg-gold"></span>
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
           Live Monitoring
           <span class="ml-auto rounded-sm bg-gold px-2 py-0.5 text-[10px] font-bold text-primarydk">LIVE</span></a></li>
         <li><a href="analytics.html" class="group flex items-center gap-3 rounded-sm px-4 py-2.5 font-medium text-bodydark duration-200 hover:bg-white/5 hover:text-white">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 3v18h18"/><path d="M18 17V9"/><path d="M13 17V5"/><path d="M8 17v-3"/></svg>
           Riwayat &amp; Analitik</a></li>
-        <li><a href="#" class="group flex items-center gap-3 rounded-sm px-4 py-2.5 font-medium text-bodydark duration-200 hover:bg-white/5 hover:text-white">
+        <li><a href="index.html#alerts" class="group flex items-center gap-3 rounded-sm px-4 py-2.5 font-medium text-bodydark duration-200 hover:bg-white/5 hover:text-white">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
-          Alerts
-          <span class="ml-auto rounded-sm bg-white/10 px-2 py-0.5 text-[9px] font-bold text-bodydark">SEGERA</span></a></li>
+          Alerts</a></li>
       </ul>
-      <h3 class="mb-3 mt-8 text-xs font-semibold uppercase tracking-wider text-bodydark">Lainnya</h3>
+      <p class="mb-3 mt-8 text-xs font-semibold uppercase tracking-wider text-bodydark">Lainnya</p>
       <ul class="flex flex-col gap-1.5">
         <li><a href="settings.html" class="group flex items-center gap-3 rounded-sm px-4 py-2.5 font-medium text-bodydark duration-200 hover:bg-white/5 hover:text-white">
           <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83 2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
           Pengaturan</a></li>
-        <li><a href="../Vision_Agent_Documentation/00_README.md" class="group flex items-center gap-3 rounded-sm px-4 py-2.5 font-medium text-bodydark duration-200 hover:bg-white/5 hover:text-white">
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
-          Dokumentasi</a></li>
       </ul>
     </nav>
 
     <div class="px-4 py-5 lg:px-6">
       <div class="rounded-sm border border-white/10 bg-white/5 p-4">
         <div class="flex items-center gap-2">
-          <span class="relative flex h-2.5 w-2.5">
-            <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-gold opacity-75"></span>
-            <span class="relative inline-flex h-2.5 w-2.5 rounded-full bg-gold"></span>
-          </span>
-          <p class="text-xs font-bold uppercase tracking-wide text-gold" id="conn-label">Menghubungkan backend CCTV</p>
+          <p class="text-xs font-bold uppercase tracking-wide text-gold">Backend CCTV</p>
         </div>
-        <p class="mt-1.5 text-[11px] leading-snug text-bodydark" id="conn-sublabel">Observation snapshot dari Vision Worker</p>
+        <p class="mt-1.5 flex items-center gap-1.5 text-[11px] leading-snug text-bodydark">
+          <span id="conn-dot" class="h-1.5 w-1.5 shrink-0 rounded-full bg-gold"></span>
+          <span id="conn-label">Menghubungkan backend CCTV</span>
+        </p>
       </div>
     </div>
   </aside>
@@ -92,15 +86,16 @@
     <header class="sticky top-0 z-20 flex w-full border-b border-stroke bg-white dark:border-strokedark dark:bg-boxdark">
       <div class="flex flex-grow items-center justify-between px-4 py-4 shadow-2 md:px-6 2xl:px-11">
         <div class="flex items-center gap-3">
-          <button id="btn-sidebar" class="rounded-sm border border-stroke p-2 dark:border-strokedark lg:hidden">
+          <button id="btn-sidebar" aria-label="Buka menu navigasi" class="rounded-sm border border-stroke p-2 dark:border-strokedark lg:hidden">
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
           </button>
           <div class="relative hidden sm:block">
             <span class="absolute left-4 top-1/2 -translate-y-1/2 text-body">
               <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
             </span>
-            <input id="cctv-search" type="text" placeholder="Cari kamera atau lokasi…"
-              class="w-full rounded-sm border border-stroke bg-transparent py-2.5 pl-11 pr-4 text-sm outline-none focus:border-primary dark:border-strokedark dark:bg-boxdark-2 xl:w-96" />
+            <label for="cctv-search" class="sr-only">Cari kamera atau lokasi</label>
+            <input id="cctv-search" type="search" placeholder="Cari kamera atau lokasi"
+              class="w-full rounded-sm border border-stroke bg-transparent py-3 pl-11 pr-4 text-sm outline-none focus:border-primary focus:ring-2 focus:ring-primary/25 dark:border-strokedark dark:bg-boxdark-2 dark:focus:border-gold dark:focus:ring-gold/25 xl:w-96" />
           </div>
         </div>
 
@@ -108,7 +103,7 @@
           <div class="hidden xl:flex flex-col items-end leading-tight">
             <span id="clock" class="text-sm font-bold text-black dark:text-white">--:--:--</span>
           </div>
-          <button id="btn-dark" class="flex h-10 w-10 items-center justify-center rounded-full border border-stroke text-body hover:bg-whiter dark:border-strokedark dark:hover:bg-boxdark-2" title="Mode gelap/terang">
+          <button id="btn-dark" aria-label="Ganti mode gelap atau terang" aria-pressed="false" class="flex h-11 w-11 items-center justify-center rounded-full border border-stroke text-body hover:bg-whiter dark:border-strokedark dark:hover:bg-boxdark-2" title="Mode gelap/terang">
             <svg id="icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
             <svg id="icon-sun" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           </button>
@@ -117,7 +112,7 @@
               <p class="text-sm font-bold text-black dark:text-white">Admin Perpus</p>
             </div>
             <div class="flex h-11 w-11 items-center justify-center rounded-full bg-primary text-sm font-bold text-gold ring-2 ring-gold/50">A</div>
-            <button id="btn-logout" title="Keluar" class="flex h-10 w-10 items-center justify-center rounded-full border border-stroke text-body hover:bg-whiter hover:text-rose-500 dark:border-strokedark dark:hover:bg-boxdark-2">
+            <button id="btn-logout" aria-label="Keluar dari dashboard" title="Keluar" class="flex h-11 w-11 items-center justify-center rounded-full border border-stroke text-body hover:bg-whiter hover:text-rose-500 dark:border-strokedark dark:hover:bg-boxdark-2">
               <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
             </button>
           </div>
@@ -133,7 +128,7 @@
         <h2 class="text-xl font-bold text-black dark:text-white md:text-2xl">Live Monitoring</h2>
         <nav>
           <ol class="flex items-center gap-2 text-sm font-medium">
-            <li><a href="index.html" class="text-body hover:text-primary dark:hover:text-gold">Dashboard</a></li>
+            <li><a href="index.html" class="inline-flex min-h-[44px] items-center text-body hover:text-primary dark:hover:text-gold">Dashboard</a></li>
             <li class="text-body">/</li>
             <li class="text-primary dark:text-gold">Live</li>
           </ol>
@@ -147,7 +142,7 @@
           <p class="text-xs font-medium text-body">Total Kamera</p>
         </div>
         <div class="rounded-sm border border-stroke bg-white px-5 py-4 shadow-default dark:border-strokedark dark:bg-boxdark">
-          <p class="text-2xl font-bold text-emerald-600 dark:text-emerald-400" id="count-online">0</p>
+          <p class="text-2xl font-bold text-emerald-700 dark:text-emerald-400" id="count-online">0</p>
           <p class="text-xs font-medium text-body">Online</p>
         </div>
         <div class="rounded-sm border border-stroke bg-white px-5 py-4 shadow-default dark:border-strokedark dark:bg-boxdark">
@@ -163,10 +158,10 @@
       <!-- Toolbar filter -->
       <div class="mb-5 flex flex-wrap items-center justify-between gap-3">
         <div class="flex items-center gap-1 rounded-sm border border-stroke bg-white p-1 dark:border-strokedark dark:bg-boxdark">
-          <button class="filter-btn rounded-sm bg-primary px-3 py-1.5 text-xs font-bold text-white dark:bg-gold dark:text-primarydk" onclick="setFilter('all', this)">Semua</button>
-          <button class="filter-btn rounded-sm px-3 py-1.5 text-xs font-bold text-body transition hover:text-primary dark:hover:text-gold" onclick="setFilter('online', this)">Online</button>
-          <button class="filter-btn rounded-sm px-3 py-1.5 text-xs font-bold text-body transition hover:text-primary dark:hover:text-gold" onclick="setFilter('standby', this)">Standby</button>
-          <button class="filter-btn rounded-sm px-3 py-1.5 text-xs font-bold text-body transition hover:text-primary dark:hover:text-gold" onclick="setFilter('offline', this)">Offline</button>
+          <button class="filter-btn flex min-h-[44px] items-center rounded-sm bg-primary px-4 text-xs font-bold text-white dark:bg-gold dark:text-primarydk" onclick="setFilter('all', this)" aria-pressed="true">Semua</button>
+          <button class="filter-btn flex min-h-[44px] items-center rounded-sm px-4 text-xs font-bold text-body transition hover:text-primary dark:hover:text-gold" onclick="setFilter('online', this)" aria-pressed="false">Online</button>
+          <button class="filter-btn flex min-h-[44px] items-center rounded-sm px-4 text-xs font-bold text-body transition hover:text-primary dark:hover:text-gold" onclick="setFilter('standby', this)" aria-pressed="false">Standby</button>
+          <button class="filter-btn flex min-h-[44px] items-center rounded-sm px-4 text-xs font-bold text-body transition hover:text-primary dark:hover:text-gold" onclick="setFilter('offline', this)" aria-pressed="false">Offline</button>
         </div>
         <p class="text-xs font-medium text-body"><span id="cctv-count">0 kamera</span> · <span id="analysis-count">7 kamera dianalisis Vision Agent</span> · klik tile untuk fokus</p>
       </div>
@@ -199,16 +194,14 @@
         <p class="mt-1 text-xs font-medium text-body">Coba ubah kata kunci pencarian atau filter status.</p>
       </div>
 
-      <footer class="py-6 text-center text-xs font-medium text-body">
-        Live Monitoring · snapshot aktual dari Vision Worker melalui Dashboard API
-      </footer>
+      <footer class="py-6"></footer>
     </main>
 </div>
 
 <script src="assets/js/auth.js"></script>
 <script src="assets/js/cctv-data.js"></script>
 <script src="assets/js/api.js"></script>
-<script src="assets/js/live.js?v=5"></script>
+<script src="assets/js/live.js?v=11"></script>
 <script>
   // Tema + sidebar + jam + logout (dipisah dari logika grid CCTV)
   (function () {

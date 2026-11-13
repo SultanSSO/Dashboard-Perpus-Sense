@@ -2,39 +2,35 @@
 venv/
 v/
 .pytest_cache/
-.env
-.env.*
-!.env.example
-.hermes/
-outputs/
-*.avi
-*.mov
-*.mkv
 __pycache__/
 *.pyc
 *.log
+.hermes/
+Thumbs.db
+
+# Konfigurasi lokal (berisi data device/kamera). Versi contoh di-commit.
+.env
+.env.*
+!.env.example
+config/camera_catalog.json
+config/vision_agent.json
+desain-awal-dashboard/assets/js/cctv-data.js
+
+# Output runtime: event store, snapshot, log
+outputs/
+
+# Artefak media/inference, bila mesin deteksi dipasang lagi di repo terpisah
+*.avi
+*.mov
+*.mkv
 *.pt
 *.onnx
 *.pkl
 *.sqlite
 *.db
-Thumbs.db
 
-# Local camera catalogs and runtime state
-config/camera_catalog.json
-config/cctv_sources.json
-config/dashboard.json
-config/vision_agent.json
-Vision_Agent_Documentation/deskripsi cctv.md
-desain-awal-dashboard/assets/js/cctv-data.js
-
-# Local IDE and OS files
+# IDE dan OS
 .vscode/
 .idea/
 .DS_Store
 ~$*
-
-# local-only artifacts
-Vision_Agent_Documentation/deskripsi cctv.md
-desain-awal-dashboard/assets/js/cctv-data.js
-vision_cctv_modes - Copy.py

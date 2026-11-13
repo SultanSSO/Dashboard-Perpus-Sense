@@ -45,8 +45,8 @@ const PerpusSettings = (() => {
     if (!status) return;
     status.textContent = message;
     status.className = `text-xs font-medium ${
-      kind === 'error' ? 'text-rose-500' :
-      kind === 'success' ? 'text-emerald-600 dark:text-emerald-400' : 'text-body'
+      kind === 'error' ? 'text-rose-700 dark:text-rose-400' :
+      kind === 'success' ? 'text-emerald-700 dark:text-emerald-400' : 'text-body'
     }`;
   }
 
@@ -55,8 +55,8 @@ const PerpusSettings = (() => {
     if (!status) return;
     status.textContent = message;
     status.className = `text-xs font-medium ${
-      kind === 'error' ? 'text-rose-500' :
-      kind === 'success' ? 'text-emerald-600 dark:text-emerald-400' : 'text-body'
+      kind === 'error' ? 'text-rose-700 dark:text-rose-400' :
+      kind === 'success' ? 'text-emerald-700 dark:text-emerald-400' : 'text-body'
     }`;
   }
 
@@ -127,14 +127,14 @@ const PerpusSettings = (() => {
         badge.className = `rounded-sm px-2.5 py-1 text-[10px] font-bold ${
           health.live_worker?.connected
             ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-300'
-            : 'bg-rose-100 text-rose-600 dark:bg-rose-500/20 dark:text-rose-300'
+            : 'bg-rose-100 text-rose-700 dark:bg-rose-500/20 dark:text-rose-300'
         }`;
       }
       renderAgentTask(select.value || agentTasks[0]?.task_id);
     } catch (error) {
       if (badge) {
         badge.textContent = 'OFFLINE';
-        badge.className = 'rounded-sm bg-rose-100 px-2.5 py-1 text-[10px] font-bold text-rose-600 dark:bg-rose-500/20 dark:text-rose-300';
+        badge.className = 'rounded-sm bg-rose-100 px-2.5 py-1 text-[10px] font-bold text-rose-700 dark:bg-rose-500/20 dark:text-rose-300';
       }
       setAgentDisabled(true);
       setAgentStatus(`Gagal memuat konfigurasi agent: ${error.message}`, 'error');
@@ -353,9 +353,12 @@ const PerpusSettings = (() => {
     const darkButton = $('set-dark');
     if (!darkButton) return;
     darkButton.setAttribute('aria-checked', String(isDark));
-    const knob = darkButton.querySelector('span');
-    darkButton.classList.toggle('bg-primary', isDark);
-    darkButton.classList.toggle('bg-slate-300', !isDark);
+    const track = darkButton.querySelector('span');
+    const knob = track ? track.querySelector('span') : null;
+    if (track) {
+      track.classList.toggle('bg-primary', isDark);
+      track.classList.toggle('bg-slate-300', !isDark);
+    }
     if (knob) knob.classList.toggle('translate-x-5', isDark);
   }
 

@@ -68,6 +68,11 @@ def build_manager(tmp_path: Path) -> RuntimeManager:
         encoding="utf-8",
     )
     (tmp_path / "yolo11n.pt").write_bytes(b"model")
+    # Dashboard-only build: detection engine is optional, so the test provides
+    # stub entrypoints to exercise the lifecycle paths.
+    (tmp_path / "vision_cctv.py").write_text("# stub worker\n", encoding="utf-8")
+    (tmp_path / "vision_agent" / "task_engine.py").parent.mkdir(parents=True, exist_ok=True)
+    (tmp_path / "vision_agent" / "task_engine.py").write_text("# stub engine\n", encoding="utf-8")
     return RuntimeManager(
         tmp_path,
         catalog_path=catalog,

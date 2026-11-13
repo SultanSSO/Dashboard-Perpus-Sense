@@ -1,11 +1,12 @@
 /* Riwayat & analitik dari event vision.event.v1 yang dibaca melalui API. */
 'use strict';
 
-const ANAL_COLOR = { gold: '#F4C542', primary: '#125174', body: '#64748B', bodyDark: '#AEB7C0', grid: '#E2E8F0', gridDark: '#2E3A47' };
+const ANAL_COLOR = { gold: '#F4C542', primary: '#125174', body: '#5B6B80', bodyDark: '#AEB7C0', grid: '#E2E8F0', gridDark: '#2E3A47' };
 const analyticsState = {
   period: 'harian',
   events: [],
   totalEvents: 0,
+  failed: false,
   dark: (new URLSearchParams(location.search).get('force') === 'dark') ||
     (localStorage.getItem('perpus-theme') ? localStorage.getItem('perpus-theme') === 'dark'
       : window.matchMedia('(prefers-color-scheme: dark)').matches),
@@ -82,6 +83,21 @@ function renderChart() {
   }
 
   const values = series.persons.filter(Number.isFinite);
+  const note = document.getElementById('analytics-note');
+  if (note) {
+    if (analyticsState.failed) {
+      note.textContent = 'Gagal memuat event dari Dashboard API. Periksa koneksi backend lalu coba lagi.';
+      note.classList.remove('hidden');
+    } else if (!analyticsState.events.length) {
+      note.textContent = 'Belum ada event pada rentang ini. Grafik akan terisi setelah Vision Worker mengirim event.';
+      note.classList.remove('hidden');
+    } else if (!values.length) {
+      note.textContent = 'Event ada, tetapi tidak ada nilai jumlah orang yang bisa dirata-ratakan.';
+      note.classList.remove('hidden');
+    } else {
+      note.classList.add('hidden');
+    }
+  }
   const average = values.length ? Math.round(values.reduce((a, b) => a + b, 0) / values.length) : null;
   const peak = values.length ? Math.round(Math.max(...values)) : null;
   const low = values.length ? Math.round(Math.min(...values)) : null;
@@ -95,7 +111,7 @@ function renderChart() {
   document.getElementById('metric-task-status').textContent = 'API';
   const recent = analyticsState.events.slice(0, 3);
   document.getElementById('analytics-events').innerHTML = recent.length
-    ? recent.map(event => `<li class="rounded-sm bg-whiter px-3.5 py-3 dark:bg-boxdark-2"><p class="text-xs font-bold text-emerald-600 dark:text-emerald-400">${event.source?.camera_id || 'CCTV'} · ${eventValue(event) ?? '--'} orang</p><p class="mt-1 text-[10px] font-medium text-body">${event.event_type || 'VISION_EVENT'} · ${new Date(event.observed_at).toLocaleString('id-ID')}</p></li>`).join('')
+    ? recent.map(event => `<li class="rounded-sm bg-whiter px-3.5 py-3 dark:bg-boxdark-2"><p class="text-xs font-bold text-emerald-700 dark:text-emerald-400">${event.source?.camera_id || 'CCTV'} · ${eventValue(event) ?? '--'} orang</p><p class="mt-1 text-[10px] font-medium text-body">${event.event_type || 'VISION_EVENT'} · ${new Date(event.observed_at).toLocaleString('id-ID')}</p></li>`).join('')
     : '<li class="rounded-sm bg-whiter p-4 text-center text-xs text-body">Belum ada event aktual.</li>';
 }
 
@@ -104,18 +120,24 @@ async function loadAnalytics() {
     const result = await VisionApi.get('/events?limit=200');
     analyticsState.events = result.items || [];
     analyticsState.totalEvents = Number.isFinite(result.total) ? result.total : analyticsState.events.length;
+    analyticsState.failed = false;
     renderChart();
   } catch (error) {
     analyticsState.events = [];
     analyticsState.totalEvents = 0;
+    analyticsState.failed = true;
     renderChart();
   }
 }
 
 function setPeriod(period, btn) {
   analyticsState.period = period;
-  document.querySelectorAll('.period-btn').forEach(b => b.className = 'period-btn rounded-sm px-3.5 py-2 text-xs font-bold text-body transition hover:text-primary dark:hover:text-gold');
-  btn.className = 'period-btn rounded-sm bg-primary px-3.5 py-2 text-xs font-bold text-white dark:bg-gold dark:text-primarydk';
+  document.querySelectorAll('.period-btn').forEach(b => {
+    b.className = 'period-btn flex min-h-[44px] items-center rounded-sm px-3.5 text-xs font-bold text-body transition hover:text-primary dark:hover:text-gold';
+    b.setAttribute('aria-pressed', 'false');
+  });
+  btn.className = 'period-btn flex min-h-[44px] items-center rounded-sm bg-primary px-3.5 text-xs font-bold text-white dark:bg-gold dark:text-primarydk';
+  btn.setAttribute('aria-pressed', 'true');
   renderChart();
 }
 

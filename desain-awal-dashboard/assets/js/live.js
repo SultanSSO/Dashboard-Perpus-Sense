@@ -1,4 +1,4 @@
-/* Live Monitoring — catalog plus actual snapshot observations from the API. */
+/* Live Monitoring: katalog area plus observation snapshot dari API. */
 'use strict';
 
 const LIVE_COLOR = { primary: '#125174', gold: '#F4C542' };
@@ -78,16 +78,21 @@ function cameraObservation(d) {
 
 function setConnectionState() {
   const label = $id('conn-label');
-  const sublabel = $id('conn-sublabel');
-  if (!label || !sublabel) return;
-  label.textContent = liveState.apiConnected
-    ? liveState.connected ? 'Vision Worker Live' : 'API Terhubung · Worker Berhenti/Stale'
-    : 'Backend CCTV Offline';
-  sublabel.textContent = liveState.apiConnected
+  if (!label) return;
+  const detail = liveState.apiConnected
     ? liveState.connected
       ? 'Observation semi-realtime dari Vision Worker'
       : 'Dashboard aktif, tetapi belum ada observation fresh'
     : 'API CCTV belum dapat dihubungi';
+  label.textContent = liveState.apiConnected
+    ? liveState.connected ? 'Vision Worker live' : 'API terhubung, worker berhenti'
+    : 'Backend CCTV offline';
+  label.title = detail;
+  const dot = $id('conn-dot');
+  if (dot) {
+    dot.className = 'h-1.5 w-1.5 shrink-0 rounded-full '
+      + (!liveState.apiConnected ? 'bg-rose-500' : liveState.connected ? 'bg-emerald-400' : 'bg-gold');
+  }
 }
 
 function renderGrid() {
@@ -129,7 +134,6 @@ function renderGrid() {
         ${active ? 'border-primary ring-2 ring-primary/30 dark:border-gold dark:ring-gold/30' : 'border-stroke dark:border-strokedark hover:border-primary/50 dark:hover:border-gold/50'}"
         data-id="${d.id}" onclick="selectTile('${d.id}')">
       <div class="relative aspect-video bg-gradient-to-br from-primarydk to-[#0a2c40]">
-        ${active ? '<span class="absolute left-0 top-0 z-10 h-full w-1 bg-gold"></span>' : ''}
         <div class="absolute inset-0 flex flex-col items-center justify-center px-4 text-center">
           <svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="rgba(174,183,192,.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
           <p class="mt-2 text-xs font-bold text-bodydark">${title}</p>
@@ -137,7 +141,7 @@ function renderGrid() {
         </div>
         <div class="absolute inset-x-0 bottom-0 flex items-center justify-between gap-2 bg-gradient-to-t from-black/70 to-transparent px-3 pb-2.5 pt-8 opacity-0 transition group-hover:opacity-100">
           <span class="flex items-center gap-1.5 text-[10px] font-bold text-white"><span class="relative flex h-2 w-2"><span class="absolute inline-flex h-full w-full animate-ping rounded-full ${st.dot} opacity-75"></span><span class="relative inline-flex h-2 w-2 rounded-full ${st.dot}"></span></span>${st.label}</span>
-          <div class="flex items-center gap-1.5">${aiBadge}<button onclick="event.stopPropagation(); openFocus('${d.id}')" title="Perbesar" class="flex h-7 items-center gap-1 rounded-sm bg-white/15 px-2 text-[10px] font-bold text-white hover:bg-white/30">Fokus</button></div>
+          <div class="flex items-center gap-1.5">${aiBadge}<button onclick="event.stopPropagation(); openFocus('${d.id}')" title="Perbesar kamera" aria-label="Perbesar kamera ${d.id}" class="flex h-11 min-w-[44px] items-center justify-center gap-1 rounded-sm bg-white/15 px-2 text-[10px] font-bold text-white hover:bg-white/30">Fokus</button></div>
         </div>
       </div>
       <div class="flex items-center justify-between gap-3 px-4 py-3">
@@ -174,7 +178,6 @@ function renderActivePanel() {
     ? `/api/v1/cameras/${encodeURIComponent(d.id)}/snapshot?ts=${encodeURIComponent(observation.observedAt || Date.now())}`
     : '';
   $id('active-viewport').innerHTML = `
-    <span class="absolute left-0 top-0 z-10 h-full w-1.5 bg-gold"></span>
     ${snapshotUrl ? `<img src="${snapshotUrl}" alt="Snapshot ${d.id}" class="h-full w-full object-contain" onerror="this.classList.add('hidden'); this.nextElementSibling.classList.remove('hidden')">` : ''}
     <div class="${snapshotUrl ? 'hidden ' : ''}absolute inset-0 flex flex-col items-center justify-center bg-gradient-to-br from-primarydk to-[#0a2c40] px-4 text-center">
       <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="rgba(174,183,192,.7)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 7l-7 5 7 5V7z"/><rect x="1" y="5" width="15" height="14" rx="2"/></svg>
@@ -192,8 +195,12 @@ function selectTile(id) { liveState.activeId = id; renderGrid(); }
 function openFocus(id) { liveState.activeId = id; renderGrid(); $id('active-panel').scrollIntoView({ behavior: 'smooth', block: 'center' }); }
 function setFilter(f, btn) {
   liveState.filter = f;
-  document.querySelectorAll('.filter-btn').forEach(b => b.className = 'filter-btn rounded-sm px-3 py-1.5 text-xs font-bold text-body transition hover:text-primary dark:hover:text-gold');
-  btn.className = 'filter-btn rounded-sm bg-primary px-3 py-1.5 text-xs font-bold text-white dark:bg-gold dark:text-primarydk';
+  document.querySelectorAll('.filter-btn').forEach(b => {
+    b.className = 'filter-btn flex min-h-[44px] items-center rounded-sm px-4 text-xs font-bold text-body transition hover:text-primary dark:hover:text-gold';
+    b.setAttribute('aria-pressed', 'false');
+  });
+  btn.className = 'filter-btn flex min-h-[44px] items-center rounded-sm bg-primary px-4 text-xs font-bold text-white dark:bg-gold dark:text-primarydk';
+  btn.setAttribute('aria-pressed', 'true');
   renderGrid();
 }
 
